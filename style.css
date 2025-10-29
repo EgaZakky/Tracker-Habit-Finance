@@ -1,0 +1,285 @@
+:root {
+    --bg: #0b1220;
+    --card: #071427;        /* Warna panel */
+    --accent: #1e90ff;      /* Warna biru utama (aksi/tombol) */
+    --muted: #98a0b3;       /* Warna teks sekunder */
+    --radius: 12px;         /* Radius sudut elemen */
+    --gap: 14px;            /* Jarak antar elemen */
+    font-family: 'times new roman', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #061423 0%, #081b2a 100%);
+  color: #e6eef8;
+  font-family: 'times new roman', sans-serif;
+}
+
+/* === HEADER === */
+.site-header {
+  text-align: center;
+  padding: 20px;
+  border-bottom: 2px solid rgba(255,255,255,0.05);
+}
+.site-header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+.subtitle {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* === LAYOUT UTAMA === */
+.container {
+  display: grid;
+  gap: var(--gap);
+  padding: 20px;
+  max-width: 1100px;
+  margin: auto;
+  grid-template-columns: 1fr; /* 1 kolom di HP */
+}
+
+/* === PANEL === */
+.panel {
+  background: rgba(255,255,255,0.03);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* === FORM DAN INPUT === */
+.row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.row input, .row select {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+}
+.btn {
+  background: linear-gradient(90deg, var(--accent), #2ec0ff);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  transition: 0.2s;
+}
+
+/* === LIST / DAFTAR === */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255,255,255,0.04);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* Tombol kecil seperti hapus/done */
+.small-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.08);
+  color: inherit;
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.small-btn:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+/* === TOAST  === */
+.toast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  background: #0d2233;
+  padding: 10px 14px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+.hidden {
+  display: none;
+}
+
+.chart-wrap {
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.05); /* Latar belakang transparan lembut */
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Efek bayangan */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.chart-wrap:hover {
+  transform: scale(1.02); /* Sedikit membesar saat diarahkan */
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+}
+
+#financeChart {
+  max-width: 175px;
+  max-height: 175px;
+  width: 100%;
+  height: auto;
+  transition: all 0.3s ease;
+}
+
+
+/* ===== BACKUP (EXPORT/IMPORT) BUTTONS ===== */
+.backup-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.backup-controls .btn.small {
+  padding: 8px 12px;
+  font-size: 13px;
+  background: linear-gradient(90deg, #1e90ff, #4fc3f7);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.backup-controls .btn.small:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #2196f3, #64b5f6);
+}
+
+
+/* ====== POPUP MODAL ====== */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* background gelap transparan */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none; /* sembunyikan modal saat tidak aktif */
+}
+
+.modal-content {
+  background: #1e1f2f;
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  position: relative;
+  animation: popUp 0.3s ease;
+}
+
+@keyframes popUp {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+.btn.info-btn {
+  padding: 6px 10px;       /* ukuran kecil */
+  font-size: 12px;         /* teks lebih kecil */
+  border-radius: 6px;      /* sudut lembut */
+  background: linear-gradient(90deg, #1e90ff, #2ec0ff);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 22px;
+  color: #ff6b6b;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  color: #ffaaaa;
+}
+
+.help-image {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.info-btn {
+  background: #007bff;
+  margin-top: 10px;
+}
+
+.info-btn:hover {
+  background: #0d6efd;
+}
+
+
+/* ===== FOOTER ===== */
+.site-footer {
+  text-align: center;
+  padding: 15px 10px;
+  background: #0a1f33; /* warna biru gelap selaras tema */
+  color: #cdd9e5; /* teks abu-biru lembut */
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin-top: 40px;
+}
+
+.site-footer a {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.site-footer i {
+  margin-right: 5px;
+  color: #e1306c; /* warna khas Instagram */
+}
+
+
+/* === RESPONSIVE (2 kolom di desktop) === */
+@media (min-width: 800px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+  }
+}

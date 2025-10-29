@@ -1,0 +1,32 @@
+# ===========================
+# 🧩 Habit & Finance Tracker
+# Git Ignore Configuration
+# ===========================
+
+# Folder atau file sistem
+.DS_Store
+Thumbs.db
+
+# Folder sementara
+temp/
+tmp/
+cache/
+
+# File backup editor
+*.bak
+*.tmp
+*.log
+
+# Folder environment
+.env
+node_modules/
+venv/
+__pycache__/
+
+# File data pribadi atau export
+data.json
+*.json
+
+# File zip atau hasil export
+*.zip
+*.rar

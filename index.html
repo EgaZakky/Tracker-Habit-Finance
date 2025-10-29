@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit & Finance by E.Zakky</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="site-header">
+     <h1>Habit & Finance Tracker</h1>
+     <p class="subtitle">Pantau Kebiasaan Dan Keuanganmu Setiap Hari</p>
+    </header>
+
+    <main class="container">
+
+        <section class="panel">
+            <h2>Habit Tracker</h2>
+            
+            <form id="habitForm" class="row">
+                <input id="habitInput" placeholder="(contoh: Plank 1 menit)" required />
+                <button type="submit" class="btn">Tambah</button> 
+            </form>
+
+            <ul id="habitList" class="list"></ul>
+        </section>
+        
+        <section class="panel">
+            <h2>Finance Tracker</h2>
+
+            <form id="financeForm" class="row">
+                <input id="descInput" placeholder="(contoh: Jajan Seblak)" required />
+                <input id="amountInput" type="number" placeholder="Jumlah (Rp)" required />
+                <select id="typeSelect">
+                    <option value="expense">Pengeluaran</option>
+                    <option value="income">Pemasukan</option>
+                </select>
+                <button type="submit" class="btn">Catat</button>
+            </form>
+            
+            <div class="finance-overview">
+                <div>Total: <span id="totalDisplay">Rp 0</span></div>
+            </div>
+
+            <ul id="financeList" class="list"></ul>
+
+            <div class="chart-wrap">
+                <canvas id="financeChart" height="150"></canvas>
+            </div>
+
+            <div class="backup-controls">
+                <button id="exportBtn" class="btn small">💾 Export Data</button>
+                <label for="importFile" class="btn small">📂 Import Data</label>
+                <input type="file" id="importFile" accept=".json" hidden>
+            </div>
+
+            <button id="helpBtn" class="btn info-btn">Cara Simpan</button>
+            
+            <div id="helpModal" class="modal hidden">
+                <div class="modal-content">
+                    <span class="close-btn">&times;</span>
+                        <h2>Panduan Penyimpanan</h2>
+                        <h4>- Kamu bisa simpan data ini harian/bulanan</h4>
+                        <h4>- Saranku Bulanan ya, sekalian Manage Gajianmu </h4>
+                        <h5>*dibawah ini contoh nama file agar tambah rapi..</h5>
+                        <img src="panduan.jpg" alt="Panduan Menyimpan" class="help-image">   
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+
+<footer class="site-footer">
+  <p>
+    <span class="version">v0.0.1 (early access)</span> · 
+    <span class="copyright">© 2025 E.Zakky</span> · 
+    <span class="update">Last update: <span id="lastUpdate"></span></span> · 
+    <a href="https://instagram.com/egzkky_" target="_blank" class="social-link">
+      <i class="fab fa-instagram"></i>@egzkky_
+    </a>
+  </p>
+</footer>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
