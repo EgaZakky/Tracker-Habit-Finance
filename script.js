@@ -308,7 +308,7 @@ exportBtn.onclick = () => {
   // Buat elemen link untuk unduh otomatis
   const a = document.createElement("a");
   a.href = url;
-  a.download = "habit_finance_backup.json";
+  a.download = "(waktu yg ditentukan).json";
   a.click();
   toast("Data berhasil diexport 💾");
 };
@@ -354,3 +354,4 @@ if (lastUpdateEl) {
   const options = { day: "2-digit", month: "short", year: "numeric" };
   lastUpdateEl.textContent = now.toLocaleDateString("en-GB", options);
 }
+
