@@ -5,7 +5,7 @@
     --muted: #98a0b3;       /* Warna teks sekunder */
     --radius: 12px;         /* Radius sudut elemen */
     --gap: 14px;            /* Jarak antar elemen */
-    font-family: 'times new roman', sans-serif;
+    font-family: 'monotype', sans-serif;
 }
 
 * {
@@ -16,7 +16,7 @@ body {
   margin: 0;
   background: linear-gradient(180deg, #061423 0%, #081b2a 100%);
   color: #e6eef8;
-  font-family: 'times new roman', sans-serif;
+  font-family: 'monotype', sans-serif;
 }
 
 /* === HEADER === */
@@ -33,6 +33,199 @@ body {
   color: var(--muted);
   font-size: 14px;
 }
+
+/* ======= REALTIME CLOCK STYLE ======= */
+#realtime-clock {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #cbe1ff;
+  text-align: center;
+  margin-bottom: 10px;
+  text-shadow: 0 0 8px #0a2574;
+  letter-spacing: 0.5px;
+}
+
+/* ======= INSTALL BUTTON ======= */
+.install-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #1e40af; /* biru laut elegan */
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  cursor: pointer;
+  display: none; /* default sembunyi */
+  transition: transform 0.2s, box-shadow 0.2s;
+  z-index: 9999;
+}
+
+.install-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+
+
+/* ======= CALENDAR MODAL ======= */
+#calendar-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  pointer-events: all; 
+}
+
+#calendar-modal.hidden {
+  display: none !important; 
+}
+
+.calendar-container {
+  background: #0b1a38;
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px #3b6cff;
+  width: 300px;
+  text-align: center;
+  position: relative;
+  z-index: 10000; 
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #cfe2ff;
+}
+
+#calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.day {
+  padding: 8px;
+  border-radius: 8px;
+  background: #12244a;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.day:hover {
+  background: #1c3675;
+}
+
+.popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.popup.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup-content {
+  background: #1a1f3b; /* sesuai tema biru malam */
+  color: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 350px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.popup-content h2 {
+  margin-bottom: 0.5rem;
+}
+
+.popup-content p {
+  margin-bottom: 1rem;
+}
+
+.popup-content button {
+  background: #3b5bdb;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* ======= CLOSE BUTTON ======= */
+.close-btn {
+  position: fixed;
+  top: 25px;
+  right: 30px;
+  background: rgba(255, 107, 107, 0.15);
+  border: 1px solid rgba(255, 107, 107, 0.4);
+  color: #ff6b6b;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  z-index: 10002;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 107, 107, 0.3);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* ======= CALENDAR FLOATING BUTTON ======= */
+.calendar-floating {
+  position: fixed;
+  bottom: 75px;
+  right: 25px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 30, 80, 0.6);
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 120, 255, 0.3);
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+}
+
+.calendar-floating:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(0, 150, 255, 0.7);
+  background: rgba(0, 40, 100, 0.8);
+}
+
+/* animasi kecil saat diklik */
+.calendar-floating:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(0, 150, 255, 0.4);
+}
+
 
 /* === LAYOUT UTAMA === */
 .container {
@@ -79,22 +272,56 @@ body {
   transition: 0.2s;
 }
 
-/* === LIST / DAFTAR === */
+/* Header di atas list (seperti tabel) */
+.table-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  background: rgba(255,255,255,0.08);
+  padding: 10px 14px;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid rgba(255,255,255,0.08);
+  font-weight: 600;
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+  margin-top: 15px;
+  backdrop-filter: blur(6px);
+}
+
+/* List seperti tabel */
 .list {
   list-style: none;
   padding: 0;
   margin: 0;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-top: none; /* biar nyatu sama header */
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
 }
 
 .list li {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
   align-items: center;
+  gap: 10px;
   background: rgba(255,255,255,0.04);
-  padding: 10px;
-  border-radius: 8px;
+  padding: 10px 14px;
   font-size: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
+
+.list li:last-child {
+  border-bottom: none;
+}
+
+.list li > *:first-child { text-align: left; }
+.list li > *:nth-child(2) { text-align: center; }
+.list li > *:last-child { text-align: right; }
+
+.list li:hover {
+  background: rgba(255,255,255,0.07);
+  transition: background 0.2s ease;
+}
+
 
 /* Tombol kecil seperti hapus/done */
 .small-btn {
@@ -109,45 +336,79 @@ body {
   background: rgba(255,255,255,0.05);
 }
 
-/* === TOAST  === */
 .toast {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
-  background: #0d2233;
-  padding: 10px 14px;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-}
-.hidden {
-  display: none;
+  top: 25px;
+  right: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background: rgba(5, 30, 80, 0.75);
+  color: #e6eef8;
+  padding: 14px 22px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 0 25px rgba(30, 144, 255, 0.35);
+  backdrop-filter: blur(10px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.3px;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 9999;
+  text-align: center;
+  min-width: 200px;
 }
 
-.chart-wrap {
-  margin-top: 20px;
-  background: rgba(255, 255, 255, 0.05); /* Latar belakang transparan lembut */
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Efek bayangan */
+/* === Habit List Style === */
+.habit-item {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  transition: all 0.3s ease;
+  gap: 10px;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.chart-wrap:hover {
-  transform: scale(1.02); /* Sedikit membesar saat diarahkan */
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+.habit-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  transform: scale(1.01);
 }
 
-#financeChart {
-  max-width: 175px;
-  max-height: 175px;
+.habit-title {
+  flex: 1;
+  text-align: left;
+}
+
+.habit-status {
+  font-size: 18px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s ease;
+}
+
+.habit-status:hover {
+  transform: scale(1.3);
+}
+
+/* Efek glow saat habit selesai */
+.habit-status.done {
+  color: lightgreen;
+  text-shadow: 0 0 6px rgba(144, 238, 144, 0.8);
+  transform: scale(1.2);
+  transition: all 0.25s ease;
+}
+
+
+/* ======= PIE CHART RESPONSIVE ======= */
+.chart-container {
   width: 100%;
-  height: auto;
-  transition: all 0.3s ease;
+  max-width: 170px;       /* ukuran maksimal biar gak kegedean */
+  margin: 1.5rem auto;
 }
 
+canvas {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 280px;      /* batas tinggi agar tetap proporsional */
+}
 
 /* ===== BACKUP (EXPORT/IMPORT) BUTTONS ===== */
 .backup-controls {
@@ -180,7 +441,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* background gelap transparan */
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -188,7 +449,7 @@ body {
 }
 
 .modal.hidden {
-  display: none; /* sembunyikan modal saat tidak aktif */
+  display: none; 
 }
 
 .modal-content {
@@ -275,6 +536,7 @@ body {
   margin-right: 5px;
   color: #e1306c; /* warna khas Instagram */
 }
+
 
 
 /* === RESPONSIVE (2 kolom di desktop) === */
