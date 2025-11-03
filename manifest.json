@@ -1,0 +1,17 @@
+{
+  "name": "Trackzy by E.Zakky",
+  "short_name": "Trackzy",
+  "description": "Habit & Finance Tracker sederhana dan elegan.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b1a2e",
+  "theme_color": "#1b3b5f",
+  "icons": [
+    {
+      "src": "Logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
